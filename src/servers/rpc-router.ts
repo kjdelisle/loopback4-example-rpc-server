@@ -7,7 +7,7 @@ export class RPCRouter {
   constructor(private server: RPCServer) {
     this.routing = express.Router();
     const jsonParser = parser.json();
-    this.routing.post('*', jsonParser, (request, response) => {});
+    this.routing.post('*', jsonParser, this.routeRequest);
     if (this.server.expressServer) {
       this.server.expressServer.use(this.routing);
     }
