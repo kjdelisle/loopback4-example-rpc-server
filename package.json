@@ -2,8 +2,11 @@
   "name": "loopback4-example-rpc-server",
   "version": "1.0.0",
   "description": "A basic RPC server using a made-up protocol.",
-  "keywords": ["loopback-application", "loopback"],
-  "main": "index.js",
+  "keywords": [
+    "loopback-application",
+    "loopback"
+  ],
+  "main": "./dist/src/index.js",
   "engines": {
     "node": ">=8"
   },
@@ -29,7 +32,13 @@
   },
   "author": "",
   "license": "MIT",
-  "files": ["README.md", "index.js", "index.d.ts", "dist", "dist6"],
+  "files": [
+    "README.md",
+    "index.js",
+    "index.d.ts",
+    "dist",
+    "dist6"
+  ],
   "dependencies": {
     "@loopback/context": "^4.0.0-alpha.18",
     "@loopback/core": "^4.0.0-alpha.20",
