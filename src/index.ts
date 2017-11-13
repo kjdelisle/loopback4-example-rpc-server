@@ -16,3 +16,7 @@ export async function main(options?: ApplicationConfig) {
   }
   return app;
 }
+
+main().catch(err => {
+  console.error('Unhandled exception!');
+});
