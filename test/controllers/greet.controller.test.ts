@@ -5,11 +5,11 @@ import {expect} from '@loopback/testlab';
 describe('greet.controller', () => {
   const controller = new GreetController();
   describe('basicHello', () => {
-    it('returns greetings for a name', () => {
+    it('returns greetings for the world without valid input', () => {
       expect(controller.basicHello({})).to.equal('Hello, World!');
     });
 
-    it('returns greetings for the world without valid input', () => {
+    it('returns greetings for a name', () => {
       const input = {
         name: 'Aaron',
       };
