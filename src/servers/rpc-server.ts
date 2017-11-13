@@ -1,14 +1,13 @@
 import {inject, Context} from '@loopback/context';
 import {Server, Application, CoreBindings} from '@loopback/core';
-import {RPCRouter} from './rpc-router';
 import * as express from 'express';
 import * as http from 'http';
 import * as pEvent from 'p-event';
+import {rpcRouter} from '.';
 
 export class RPCServer extends Context implements Server {
   _server: http.Server;
   expressServer: express.Application;
-  router: RPCRouter;
   constructor(
     @inject(CoreBindings.APPLICATION_INSTANCE) public app?: Application,
     @inject('rpcServer.config') public config?: RPCServerConfig,
@@ -19,7 +18,7 @@ export class RPCServer extends Context implements Server {
 
   async start(): Promise<void> {
     this.expressServer = express();
-    this.router = new RPCRouter(this);
+    rpcRouter(this);
     this._server = this.expressServer.listen(
       (this.config && this.config.port) || 3000,
     );
