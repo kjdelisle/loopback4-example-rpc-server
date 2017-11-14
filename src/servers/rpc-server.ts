@@ -14,11 +14,11 @@ export class RPCServer extends Context implements Server {
   ) {
     super(app);
     this.config = config || {};
+    this.expressServer = express();
+    rpcRouter(this);
   }
 
   async start(): Promise<void> {
-    this.expressServer = express();
-    rpcRouter(this);
     this._server = this.expressServer.listen(
       (this.config && this.config.port) || 3000,
     );
