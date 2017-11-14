@@ -14,7 +14,7 @@ describe('rpcRouter', () => {
     beforeEach(testSetup);
     it('routes correctly when controller and method exist', async () => {
       await routeHandler(server, request, response);
-      expect(responseStub.called);
+      sinon.assert.called(responseStub);
       expect(responseStub.firstCall.args[0]).to.match(/Hello, Janet!/);
     });
 
@@ -23,7 +23,7 @@ describe('rpcRouter', () => {
       getStub.rejects(new Error('Does not exist!'));
       await routeHandler(server, request, response);
       expect(response.statusCode).to.equal(400);
-      expect(responseStub.called);
+      sinon.assert.called(responseStub);
       expect(responseStub.firstCall.args[0]).to.match(/Does not exist!/);
     });
 
@@ -39,7 +39,7 @@ describe('rpcRouter', () => {
       });
       await routeHandler(server, request, response);
       expect(response.statusCode).to.equal(400);
-      expect(responseStub.called);
+      sinon.assert.called(responseStub);
       expect(responseStub.firstCall.args[0]).to.match(
         /No method was found on controller/,
       );
@@ -56,7 +56,7 @@ describe('rpcRouter', () => {
       );
       await routeHandler(server, request, response);
       expect(response.statusCode).to.equal(500);
-      expect(responseStub.called);
+      sinon.assert.called(responseStub);
       expect(responseStub.firstCall.args[0].message).to.match('>:(');
     });
     function testSetup() {
