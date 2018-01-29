@@ -1,6 +1,0 @@
-# Ignore installables and compiler output
-dist
-*.js
-*.d.ts
-node_modules
-
